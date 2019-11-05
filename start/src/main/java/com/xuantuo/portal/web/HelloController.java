@@ -1,10 +1,13 @@
 package com.xuantuo.portal.web;
 
+import com.xuantuo.portal.biz.EntFileService;
 import com.xuantuo.portal.result.JsonResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * @Author:xuantuo
@@ -14,11 +17,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/")
 public class HelloController {
 
+    @Resource
+    EntFileService entFileService;
+
     @RequestMapping(value = "/sayHi",method = RequestMethod.GET)
     @ResponseBody
     public JsonResult sayHi(String query){
         JsonResult jsonResult = JsonResult.newResult();
         jsonResult.setData("haha");
+        jsonResult.setErrMsg(entFileService.getStr());
         return jsonResult;
     }
 }
