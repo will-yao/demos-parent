@@ -50,9 +50,18 @@ public class StaticFacToConstruct {
 
     public static void main(String[] args) {
         //  instance或者getInstance
-        StackWalker luke = StackWalker.getInstance("AA");
+        //StackWalker luke = StackWalker.getInstance("AA");
 
-        System.out.println(luke.name);
+        //System.out.println(System.currentTimeMillis());
+        //System.out.println((new Date(1576582145694L)).getTime());
+
+        System.out.println(String.format("%03d", 1L));
+        System.out.println(String.format("%03d", 1));
+        System.out.println(String.format("%03d", 11));
+        System.out.println(String.format("%03d", 111));
+        System.out.println(String.format("%03d", 1111));
+
+
     }
 
 
