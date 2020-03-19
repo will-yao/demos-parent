@@ -24,5 +24,7 @@ public class CalendarDemo {
         long leftTime = (cal.getTimeInMillis() - current) / 1000;
 
         System.out.println((int)leftTime);
+        System.out.println((int) leftTime > 1 ? (int) leftTime : 1);
+        System.out.println((int)current);
     }
 }
