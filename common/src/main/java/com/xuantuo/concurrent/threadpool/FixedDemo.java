@@ -1,11 +1,14 @@
 package com.xuantuo.concurrent.threadpool;
 
 import com.google.common.collect.Lists;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
+
+import static java.lang.Thread.sleep;
 
 /**
  * @Author:xuantuo
@@ -13,7 +16,8 @@ import java.util.concurrent.*;
  **/
 public class FixedDemo {
 
-    private ExecutorService pool = Executors.newFixedThreadPool(10);
+    private static ExecutorService pool = Executors.newFixedThreadPool(10);
+    private static ExecutorService singleTh = Executors.newSingleThreadExecutor();
 
     //ThreadPoolTaskExecutor tt = new ThreadPoolTaskExecutor();
 
@@ -39,6 +43,35 @@ public class FixedDemo {
         }
 
         return res;
+
+    }
+
+    public static void main(String[] args) {
+
+
+        System.out.println(StringUtils.endsWith("sssssss", "_prior"));
+
+        System.out.println(StringUtils.endsWith("sssssss_prior", "_prior"));
+        System.out.println(StringUtils.endsWith("sssssss-prior", "_prior"));
+
+        singleTh.execute(() -> {
+            try {
+                sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("aa");
+        });
+        System.out.println("xx");
+        singleTh.execute(() -> {
+            System.out.println("bb");
+        });
+        singleTh.execute(() -> {
+            System.out.println("cc");
+        });
+
+        singleTh.shutdown();
+
 
     }
 }

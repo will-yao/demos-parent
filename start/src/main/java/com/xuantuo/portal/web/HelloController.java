@@ -1,9 +1,13 @@
 package com.xuantuo.portal.web;
 
+import com.xuantuo.log.SystemControllerLog;
+import com.xuantuo.log.SystemLogAspect;
 import com.xuantuo.portal.biz.EntFileService;
 import com.xuantuo.portal.dto.BaseContentDTO;
 import com.xuantuo.portal.result.JsonResult;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +28,13 @@ public class HelloController {
     @Resource
     EntFileService entFileService;
 
+    private static final Logger LOG = LoggerFactory.getLogger(HelloController.class);
+
     @RequestMapping(value = "/sayHi",method = RequestMethod.GET)
     @ResponseBody
+    @SystemControllerLog
     public JsonResult sayHi(String query) {
+        LOG.info("HelloController#sayHi");
         JsonResult jsonResult = JsonResult.newResult();
         jsonResult.setData(query);
         jsonResult.setErrMsg(entFileService.getStr());
@@ -35,8 +43,9 @@ public class HelloController {
 
     @RequestMapping("/getContent/{appKey}/{contentId}")
     @ResponseBody
+    @SystemControllerLog
     public JsonResult<BaseContentDTO> getContent(@PathVariable(value = "contentId") long contentId, @PathVariable(value = "appKey") String appKey) {
-
+        LOG.info("HelloController#getContent");
         JsonResult<BaseContentDTO> r = new JsonResult<>();
         r.setErrCode(String.valueOf(contentId) );
         r.setErrMsg(appKey);
