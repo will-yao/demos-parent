@@ -52,21 +52,27 @@ public class TestMain {
 //        calendar.add(Calendar.YEAR,100);
 //        System.out.println(simpleDateFormat.format(calendar.getTime()) );
         //Map<String,ActionDO> mapMap = Maps.newHashMap();
-        ActionDO actionDO = new ActionDO();
-        ActionDO actionDO2 = new ActionDO();
-        actionDO2.setActionDO(new ActionDO());
-        actionDO.setActionDO(actionDO2);
+//        ActionDO actionDO = new ActionDO();
+//        ActionDO actionDO2 = new ActionDO();
+//        actionDO2.setActionDO(new ActionDO());
+//        actionDO.setActionDO(actionDO2);
+//
+//
+//        Optional.ofNullable(actionDO)
+//                .map(m -> m.getActionDO())
+//                .map(m2 -> m2.getActionDO())
+//                .ifPresent(actionDO1 -> {
+//                    actionDO1.setAttributes("222");
+//                });
+//        System.out.println(actionDO.getActionDO().getActionDO().getAttributes());
+
+        List<Integer> l = Lists.newArrayList(1, 2, 18, 4, 5, 6, 7, 8, 9);
+        Integer max = l.stream().reduce(10, (a, b) -> {
+           return a > b ? a:b;
+        });
 
 
-        Optional.ofNullable(actionDO)
-                .map(m -> m.getActionDO())
-                .map(m2 -> m2.getActionDO())
-                .ifPresent(actionDO1 -> {
-                    actionDO1.setAttributes("222");
-                });
-        System.out.println(actionDO.getActionDO().getActionDO().getAttributes());
-
-
+        System.out.println(max);
 
 
     }

@@ -17,6 +17,7 @@
         <module>service</module>
         <module>common</module>
         <module>client</module>
+        <module>design-patterns</module>
     </modules>
 
     <name>demos-parent</name>
