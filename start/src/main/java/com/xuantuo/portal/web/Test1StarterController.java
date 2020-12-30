@@ -1,6 +1,8 @@
 package com.xuantuo.portal.web;
 
 //import com.xuantuo.portal.DemoService;
+
+import com.xuantuo.dubbo.consumer.OrderConsumer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +18,13 @@ public class Test1StarterController {
 //    @Resource
 //    private DemoService demoService;
 
+    @Resource
+    private OrderConsumer orderConsumer;
+
+    @GetMapping("/createOne")
+    public void createOne() {
+        orderConsumer.createOne();
+    }
 
 //    @GetMapping("/say")
 //    public String sayWhat() {
